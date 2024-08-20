@@ -23,3 +23,6 @@ public class application {
         //LoanAsset.consoleLog(StudentLoan);
     }
 }
+//this sessions questions
+//abstraction vs interface
+//dependency inversion vs dependency injection
