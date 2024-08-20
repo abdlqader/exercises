@@ -1,18 +1,25 @@
 package loanCalculator;
 
-import loanCalculator.LoanCalculator.*;
+import loanCalculator.Loan.*;
 
 public class application {
 
     public static void main(String[] args) {
+        //creation pattern or creation methods
+        LoanCalculatorInterface creationStudentLoan = new Loan().studentLoan(4, 10000L);
+        LoanCalculatorInterface creationWorkerLoan = new Loan().workerLoanCreation(5, 10000L);
+        LoanCalculatorInterface creationFreeLoan = new Loan().freeLoanCreation(4, 10000L);
+        LoanAsset.consoleLog(creationStudentLoan);
 
-        LoanCalculatorInterface studentLoan = new LoanCalculator().studentLoan(4, 10000L, 3);
-        LoanCalculatorInterface workerLoan = new LoanCalculator().workerLoanCreation(5, 10000L);
-        LoanCalculatorInterface freeLoan = new LoanCalculator().freeLoanCreation(4, 10000L, 1);
+        //basic factory pattern
+        LoanCalculatorInterface factoryLoan = new Loan().factoryBuilder(Strategies.STUDENT_LOAN);
+        LoanAsset.consoleLog(factoryLoan);
 
-        LoanCalculatorInterface studentLoan1 = new LoanCalculator().factoryBuilder(Strategies.STUDENT_LOAN);
-//        calculator.setDuration(4);
-//        System.out.println("worked ! & duration = " + freeLoan.getDuration() + " with risk = " + freeLoan.calculate());
-        LoanAsset.consoleLog(studentLoan1);
+        //Strategy pattern TODO:
+        //instead of having a class create 3 versions of it self ( creation pattern )
+        //i want to create 3 classes each one represent itself
+        //for example i want StudentLoan with its own riskLevel Method
+        //all the classes should be working on consoleLog of LoanAsset
+        //LoanAsset.consoleLog(StudentLoan);
     }
 }
