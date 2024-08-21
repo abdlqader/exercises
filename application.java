@@ -15,12 +15,17 @@ public class application {
         LoanCalculatorInterface factoryLoan = new Loan().factoryBuilder(Strategies.STUDENT_LOAN);
         LoanAsset.consoleLog(factoryLoan);
 
-        //Strategy pattern TODO:
-        //instead of having a class create 3 versions of it self ( creation pattern )
-        //i want to create 3 classes each one represent itself
-        //for example i want StudentLoan with its own riskLevel Method
-        //all the classes should be working on consoleLog of LoanAsset
-        //LoanAsset.consoleLog(StudentLoan);
+        //Strategy pattern
+        LoanCalculatorAbstract strategyStudentLoan = new StudentLoan(4,10000L);
+        LoanCalculatorAbstract strategyWorkerLoan = new WorkerLoan(4,10000L);
+        FreeLoan strategyFreeLoan = new FreeLoan(4,10000L);
+        LoanAsset.consoleLog(strategyStudentLoan);
+        LoanAsset.consoleLog(strategyFreeLoan);
+
+        //abstract Factory pattern
+        LoanCalculatorAbstract pickedStrategy = LoanAsset.loanFactory(Strategies.STUDENT_LOAN, 5, 70000L); // welcome to abstraction in OOP
+        LoanAsset.consoleLog(pickedStrategy);
+
     }
 }
 //this sessions questions
